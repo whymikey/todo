@@ -1,0 +1,361 @@
+@import url('./components/style/themes.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--main-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-color);
+}
+
+/* ---- Layout ---- */
+.todo {
+  display: grid;
+  grid-template-columns: minmax(260px, 25%) 1fr;
+  min-height: 100vh;
+}
+
+/* ---- Sidebar ---- */
+.left_bar_user {
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar-bg);
+  padding: 24px 20px 32px;
+  border-right: 1px solid var(--separator);
+}
+
+.burger {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 32px;
+}
+
+.hamburger-line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-color);
+  border-radius: 1px;
+  transition: 0.2s;
+}
+
+.user_profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.image-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.user_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user_profile_text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+}
+
+.user_name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.user_email {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--inactive-color);
+}
+
+.left_bar_user::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--separator);
+  margin: 20px 0;
+  max-width: 100%;
+}
+
+.user_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user_menu_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.user_menu_item:hover {
+  background: var(--nav-active-bg);
+}
+
+.user_menu_item--active {
+  background: var(--nav-active-bg);
+}
+
+.user_menu_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.user_menu_icon svg {
+  flex-shrink: 0;
+}
+
+/* ---- Main content ---- */
+.todo_content {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 48px 24px;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.todo_content_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.todo_header {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.theme_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.theme_toggle:hover {
+  background: var(--nav-active-bg);
+}
+
+/* ---- Form ---- */
+.form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.todo_input {
+  flex: 1;
+  height: 48px;
+  padding: 0 18px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.todo_input::placeholder {
+  color: var(--inactive-color);
+}
+
+.todo_input:focus {
+  border-color: var(--text-color);
+}
+
+.todo_btn {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  background: var(--btns-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.todo_btn:hover {
+  opacity: 0.9;
+}
+
+/* ---- Filters ---- */
+.todo_tasks_progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.todo_progress_text_elements {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo_progress_text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--inactive-color);
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.todo_progress_text:hover {
+  color: var(--text-color);
+}
+
+.todo_progress_text--active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.todo_progress_text_elements .todo_progress_text + .todo_progress_text::before {
+  content: '|';
+  margin-right: 8px;
+  color: var(--inactive-color);
+  font-weight: 400;
+}
+
+.todo_progress_counter {
+  font-size: 0.875rem;
+  color: var(--inactive-color);
+}
+
+/* ---- Task list ---- */
+.todo_tasks_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo_task_element {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.todo_task_element:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.todo_tasks_checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--btns-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo_task_text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.todo_task_element--completed .todo_task_text {
+  text-decoration: line-through;
+  color: var(--inactive-color);
+}
+
+.todo_task_action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 6px;
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.todo_task_action:hover {
+  opacity: 1;
+  background: var(--nav-active-bg);
+}
+
+/* ---- Footer ---- */
+.todo_footer {
+  margin-top: auto;
+  padding-top: 32px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--inactive-color);
+}
+
+@media (max-width: 768px) {
+  .todo {
+    grid-template-columns: 1fr;
+  }
+
+  .left_bar_user {
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--separator);
+  }
+
+  .todo_content {
+    padding: 24px 20px;
+  }
+}

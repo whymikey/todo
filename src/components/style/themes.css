@@ -1,0 +1,48 @@
+    :root {
+        --btns-color: #000000;
+        --text-color: #000000;
+        --bg-color: #FFFFFF;
+        --inactive-color: #6A7282;
+        --sidebar-bg: #FFFFFF;
+        --main-bg: #F5F5F5;
+        --card-bg: #FFFFFF;
+        --input-border: #E0E0E0;
+        --nav-active-bg: #F0F0F0;
+        --separator: #E5E5E5;
+    }
+
+    :root.theme-light {
+        --btns-color: #000000;
+        --text-color: #000000;
+        --bg-color: #FFFFFF;
+        --inactive-color: #6A7282;
+        --sidebar-bg: #FFFFFF;
+        --main-bg: #F5F5F5;
+        --card-bg: #FFFFFF;
+        --input-border: #E0E0E0;
+        --nav-active-bg: #F0F0F0;
+        --separator: #E5E5E5;
+    }
+
+    :root.theme-dark {
+        --btns-color: #FFFFFF;
+        --text-color: #FFFFFF;
+        --bg-color: #000000;
+        --inactive-color: #6A7282;
+        --sidebar-bg: #1a1a1a;
+        --main-bg: #0d0d0d;
+        --card-bg: #262626;
+        --input-border: #404040;
+        --nav-active-bg: #333333;
+        --separator: #333333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not([class]) {
+            --sidebar-bg: #1a1a1a;
+            --main-bg: #0d0d0d;
+            --card-bg: #262626;
+            --nav-active-bg: #333333;
+            --separator: #333333;
+        }
+    }
