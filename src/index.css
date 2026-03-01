@@ -104,6 +104,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding-top: 15px;
 }
 
 .user_menu_item {
@@ -215,7 +216,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   font-family: inherit;
-  color: #fff;
+  color: var(--btns-text-color);
   background: var(--btns-color);
   border: none;
   border-radius: 10px;
@@ -260,7 +261,7 @@ body {
   font-weight: 600;
 }
 
-.todo_progress_text_elements .todo_progress_text + .todo_progress_text::before {
+.todo_progress_text_elements .todo_progress_text+.todo_progress_text::before {
   content: '|';
   margin-right: 8px;
   color: var(--inactive-color);
@@ -307,6 +308,41 @@ body {
   flex: 1;
   font-size: 1rem;
   color: var(--text-color);
+}
+
+.input__edit {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: inherit;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.input__edit::placeholder {
+  color: var(--inactive-color);
+}
+
+.input__edit:focus {
+  border-color: var(--text-color);
+  background: var(--nav-active-bg);
+}
+
+.todo_task_element--completed .input__edit {
+  color: var(--inactive-color);
+  text-decoration: line-through;
+}
+
+.todo_task_element--completed .input__edit:focus {
+  text-decoration: none;
 }
 
 .todo_task_element--completed .todo_task_text {

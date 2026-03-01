@@ -1,5 +1,6 @@
     :root {
         --btns-color: #000000;
+        --btns-text-color: #FFFFFF;
         --text-color: #000000;
         --bg-color: #FFFFFF;
         --inactive-color: #6A7282;
@@ -9,10 +10,12 @@
         --input-border: #E0E0E0;
         --nav-active-bg: #F0F0F0;
         --separator: #E5E5E5;
+        --border: #000;
     }
 
     :root.theme-light {
         --btns-color: #000000;
+        --btns-text-color: #FFFFFF;
         --text-color: #000000;
         --bg-color: #FFFFFF;
         --inactive-color: #6A7282;
@@ -22,10 +25,12 @@
         --input-border: #E0E0E0;
         --nav-active-bg: #F0F0F0;
         --separator: #E5E5E5;
+        --border: #000;
     }
 
     :root.theme-dark {
         --btns-color: #FFFFFF;
+        --btns-color: #000000;
         --text-color: #FFFFFF;
         --bg-color: #000000;
         --inactive-color: #6A7282;
@@ -35,6 +40,7 @@
         --input-border: #404040;
         --nav-active-bg: #333333;
         --separator: #333333;
+        --border: #fff;
     }
 
     @media (prefers-color-scheme: dark) {
