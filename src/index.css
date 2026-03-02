@@ -256,7 +256,7 @@ body {
   color: var(--text-color);
 }
 
-.todo_progress_text--active {
+.todo_progress_text--focus {
   color: var(--text-color);
   font-weight: 600;
 }
