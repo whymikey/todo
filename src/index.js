@@ -20,13 +20,10 @@ const app = {
   tasks: [],
   template: document.querySelector(".template"),
   tasksList: document.querySelector(".todo_tasks_list"),
-  tasksListElement: document.querySelectorAll(".todo_task_element"),
   form: document.querySelector(".form"),
-  activeTasks: document.querySelector(".todo_progress_text--active"),
-  completedTasks: document.querySelector(".todo_progress_text--completed"),
 };
 
-const progressList = document.querySelectorAll(".todo_progress_text");
+const progress = document.querySelector(".todo_progress_text_elements");
 
 app.tasksList.addEventListener("change", (evt) => toggleCheckbox(evt, app));
 app.tasksList.addEventListener("click", (evt) => deleteTask(evt, app));
@@ -35,8 +32,16 @@ app.tasksList.addEventListener("click", (evt) => editTask(evt, app));
 handleFormSubmit(app);
 loadLocalStorage(app);
 
-progressList.forEach((el) => {
-  el.addEventListener("click", (evt) => {
-    getProgress(evt, app);
-  });
+progress.addEventListener("click", (evt) => {
+  const clickedTab = evt.target.closest(".todo_progress_text");
+
+  if (!clickedTab) return;
+
+  document
+    .querySelector(".todo_progress_text--focus")
+    ?.classList.remove("todo_progress_text--focus");
+  clickedTab.classList.add("todo_progress_text--focus");
+
+  getProgress({ target: clickedTab }, app);
 });
+

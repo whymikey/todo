@@ -42,6 +42,9 @@ export function editTask(evt, { tasks }) {
   if (!editBtn) return;
 
   const taskElement = editBtn.closest(".todo_task_element");
+  if (taskElement.querySelector(".input__edit")) return;
+  if (taskElement.classList.contains("todo_task_element--completed")) return;
+
   const taskText = taskElement.querySelector(".todo_task_text");
   const taskId = +taskElement.dataset.id;
 
@@ -52,16 +55,23 @@ export function editTask(evt, { tasks }) {
   taskText.replaceWith(input);
   input.focus();
 
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      taskText.textContent = input.value;
-      input.replaceWith(taskText);
-      saveEdit(input, taskId, tasks);
-    }
+  const finishingEdit = (save) => {
+    if (save) taskText.textContent = input.value;
+    input.replaceWith(taskText);
+    if (save) saveEdit(input, taskId, tasks);
+  };
+
+  input.addEventListener("keyup", (evt) => {
+    if (evt.key === "Enter") finishingEdit(true);
+    if (evt.key === "Escape") finishingEdit(false);
   });
+
+  input.addEventListener('blur', () => {
+    setTimeout(() => finishingEdit(false), 0)
+  })
 }
 
-export function saveEdit(input, taskId, tasks) {
+function saveEdit(input, taskId, tasks) {
   const task = tasks.find((task) => task.id === taskId);
   if (task) {
     task.text = input.value;
