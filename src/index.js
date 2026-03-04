@@ -3,6 +3,7 @@ import {
   toggleCheckbox,
   deleteTask,
   editTask,
+  renderProgressCounter
 } from "./components/scripts/ui.js";
 
 import { handleFormSubmit } from "./components/scripts/tasks.js";
@@ -21,6 +22,7 @@ const app = {
   template: document.querySelector(".template"),
   tasksList: document.querySelector(".todo_tasks_list"),
   form: document.querySelector(".form"),
+  progressCounter: document.querySelector(".todo_progress_counter"),
 };
 
 const progress = document.querySelector(".todo_progress_text_elements");
@@ -31,6 +33,7 @@ app.tasksList.addEventListener("click", (evt) => editTask(evt, app));
 
 handleFormSubmit(app);
 loadLocalStorage(app);
+renderProgressCounter(app);
 
 progress.addEventListener("click", (evt) => {
   const clickedTab = evt.target.closest(".todo_progress_text");
@@ -44,4 +47,3 @@ progress.addEventListener("click", (evt) => {
 
   getProgress({ target: clickedTab }, app);
 });
-

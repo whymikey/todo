@@ -1,6 +1,6 @@
 import { saveLocalStorage } from "./storage.js";
 
-export function toggleCheckbox(evt, { tasks }) {
+export function toggleCheckbox(evt, { tasks, progressCounter }) {
   const checkbox = evt.target;
 
   if (!checkbox.classList.contains("todo_tasks_checkbox")) return;
@@ -19,9 +19,10 @@ export function toggleCheckbox(evt, { tasks }) {
   );
 
   saveLocalStorage(tasks);
+  renderProgressCounter({ tasks, progressCounter });
 }
 
-export function deleteTask(evt, { tasks }) {
+export function deleteTask(evt, { tasks, progressCounter }) {
   const deleteBtn = evt.target.closest("[aria-label = Delete]");
 
   if (!deleteBtn) return;
@@ -34,6 +35,7 @@ export function deleteTask(evt, { tasks }) {
 
   taskElement.remove();
   saveLocalStorage(tasks);
+  renderProgressCounter({ tasks, progressCounter });
 }
 
 export function editTask(evt, { tasks }) {
@@ -66,9 +68,9 @@ export function editTask(evt, { tasks }) {
     if (evt.key === "Escape") finishingEdit(false);
   });
 
-  input.addEventListener('blur', () => {
-    setTimeout(() => finishingEdit(false), 0)
-  })
+  input.addEventListener("blur", () => {
+    setTimeout(() => finishingEdit(false), 0);
+  });
 }
 
 function saveEdit(input, taskId, tasks) {
@@ -77,4 +79,9 @@ function saveEdit(input, taskId, tasks) {
     task.text = input.value;
   }
   saveLocalStorage(tasks);
+}
+
+export function renderProgressCounter({ tasks, progressCounter }) {
+  const completedTasks = tasks.filter((task) => task.status === false);
+  progressCounter.textContent = `${completedTasks.length} tasks left`;
 }
