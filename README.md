@@ -8,7 +8,7 @@
 
 ## 👀 Preview
 <p align="center">
-      <img src="https://i.ibb.co/8nd2pLwt/todo.png" width="1920">
+      <img src="https://i.ibb.co/tPLfmmLX/todo.png" width="1920">
 </p>
 
 
